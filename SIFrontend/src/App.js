@@ -1,7 +1,7 @@
 import './App.css';
 import { Login } from './components/Login'
 import { Signup } from './components/Signup';
-import { Game } from './components/Game'
+import { Menu } from './components/Menu'
 import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
 import { useEffect, useState } from "react"
 import loginstyle from "./components/login.module.css"
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login setMessages={setMessages} />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/signup' element={<Signup setMessages={setMessages} />} />
           <Route path='/menu' element={<Menu />} />
         </Routes>
       </BrowserRouter>

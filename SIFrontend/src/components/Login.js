@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 export function Login({ setMessages }) {
     const [username, setUsername] = useState("");
+    //const [menu, setMenu] = useState(false)
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
-
     async function login() {
         const res = await fetch(`/`, {
             method: "POST",
@@ -19,7 +19,11 @@ export function Login({ setMessages }) {
 
         const resJson = await res.json()
         setMessages(resJson.Message)
-        navigate('/game')
+        if (resJson.token !== undefined) {
+            localStorage.setItem("token", resJson.token)
+            navigate('/menu')
+        }
+
     }
 
     return (
